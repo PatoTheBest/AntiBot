@@ -2,6 +2,7 @@ package twolovers.antibot.bungee.module;
 
 import net.md_5.bungee.api.connection.Connection;
 import net.md_5.bungee.config.Configuration;
+import twolovers.antibot.bungee.api.ViolationType;
 import twolovers.antibot.bungee.instanceables.BotPlayer;
 import twolovers.antibot.bungee.instanceables.Conditions;
 import twolovers.antibot.bungee.utils.ConfigUtil;
@@ -75,5 +76,10 @@ public class SettingsModule implements PunishModule {
 
 	public long getDelay() {
 		return this.delay;
+	}
+
+	@Override
+	public ViolationType getViolationType() {
+		return ViolationType.SETTINGS;
 	}
 }

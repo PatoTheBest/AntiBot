@@ -11,6 +11,7 @@ import net.md_5.bungee.api.event.ProxyPingEvent;
 import net.md_5.bungee.api.plugin.Cancellable;
 import net.md_5.bungee.api.plugin.Event;
 import net.md_5.bungee.api.plugin.Plugin;
+import twolovers.antibot.bungee.api.ModuleViolationEvent;
 import twolovers.antibot.bungee.module.ModuleManager;
 import twolovers.antibot.bungee.module.NotificationsModule;
 import twolovers.antibot.bungee.module.PlaceholderModule;
@@ -29,6 +30,12 @@ public class Punish {
 		final String punishModuleName = punishModule.getName(),
 				checkName = punishModuleName.substring(0, 1).toUpperCase() + punishModuleName.substring(1),
 				address = connection.getAddress().getHostString();
+
+		ModuleViolationEvent moduleViolationEvent = new ModuleViolationEvent(punishModule.getViolationType(), connection);
+		ProxyServer.getInstance().getPluginManager().callEvent(moduleViolationEvent);
+		if (moduleViolationEvent.isCancelled()) {
+			return;
+		}
 
 		if (notificationsModule.isEnabled()) {
 			final String notification = placeholderModule.replacePlaceholders(locale, "%notification_message%", address,

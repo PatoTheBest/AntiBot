@@ -5,6 +5,7 @@ import java.util.HashSet;
 
 import net.md_5.bungee.api.connection.Connection;
 import net.md_5.bungee.config.Configuration;
+import twolovers.antibot.bungee.api.ViolationType;
 import twolovers.antibot.bungee.instanceables.BotPlayer;
 import twolovers.antibot.bungee.instanceables.Conditions;
 import twolovers.antibot.bungee.utils.ConfigUtil;
@@ -68,5 +69,10 @@ public class RateLimitModule implements PunishModule {
 	@Override
 	public Collection<String> getPunishCommands() {
 		return punishCommands;
+	}
+
+	@Override
+	public ViolationType getViolationType() {
+		return ViolationType.RATE_LIMIT;
 	}
 }

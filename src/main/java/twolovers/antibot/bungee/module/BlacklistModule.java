@@ -2,6 +2,7 @@ package twolovers.antibot.bungee.module;
 
 import net.md_5.bungee.api.connection.Connection;
 import net.md_5.bungee.config.Configuration;
+import twolovers.antibot.bungee.api.ViolationType;
 import twolovers.antibot.bungee.instanceables.Conditions;
 import twolovers.antibot.bungee.utils.ConfigUtil;
 import twolovers.antibot.shared.interfaces.PunishModule;
@@ -93,5 +94,10 @@ public class BlacklistModule implements PunishModule {
 
 	public boolean isBlacklisted(String ip) {
 		return this.blacklist.contains(ip);
+	}
+
+	@Override
+	public ViolationType getViolationType() {
+		return ViolationType.BLACKLIST;
 	}
 }

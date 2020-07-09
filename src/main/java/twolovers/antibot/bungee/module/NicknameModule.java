@@ -3,6 +3,7 @@ package twolovers.antibot.bungee.module;
 import net.md_5.bungee.api.connection.Connection;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.config.Configuration;
+import twolovers.antibot.bungee.api.ViolationType;
 import twolovers.antibot.bungee.instanceables.Conditions;
 import twolovers.antibot.bungee.utils.ConfigUtil;
 import twolovers.antibot.shared.interfaces.PunishModule;
@@ -89,5 +90,10 @@ public class NicknameModule implements PunishModule {
 
 	public final void setLastNickname(String nickname) {
 		lastNickname = nickname;
+	}
+
+	@Override
+	public ViolationType getViolationType() {
+		return ViolationType.NICKNAME;
 	}
 }
