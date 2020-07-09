@@ -3,6 +3,7 @@ package twolovers.antibot.bungee.api;
 import net.md_5.bungee.api.connection.Connection;
 import net.md_5.bungee.api.plugin.Cancellable;
 import net.md_5.bungee.api.plugin.Event;
+import twolovers.antibot.bungee.instanceables.BotPlayer;
 
 /**
  * Event triggered when a violation occurs.
@@ -13,10 +14,12 @@ public class ModuleViolationEvent extends Event implements Cancellable {
     private boolean cancelled = false;
     private final ViolationType violationType;
     private final Connection connection;
+    private final BotPlayer botPlayer;
 
-    public ModuleViolationEvent(ViolationType violationType, Connection connection) {
+    public ModuleViolationEvent(ViolationType violationType, Connection connection, BotPlayer botPlayer) {
         this.violationType = violationType;
         this.connection = connection;
+        this.botPlayer = botPlayer;
     }
 
     /**
@@ -35,6 +38,16 @@ public class ModuleViolationEvent extends Event implements Cancellable {
      */
     public Connection getConnection() {
         return connection;
+    }
+
+    /**
+     * Gets the {@link BotPlayer} object bounded with the ip.
+     * This can be useful to get CPS, PPS and JPS among other things
+     *
+     * @return the {@link BotPlayer} object
+     */
+    public BotPlayer getBotPlayer() {
+        return botPlayer;
     }
 
     /**

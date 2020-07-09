@@ -31,7 +31,8 @@ public class Punish {
 				checkName = punishModuleName.substring(0, 1).toUpperCase() + punishModuleName.substring(1),
 				address = connection.getAddress().getHostString();
 
-		ModuleViolationEvent moduleViolationEvent = new ModuleViolationEvent(punishModule.getViolationType(), connection);
+		final BotPlayer botPlayer = moduleManager.getPlayerModule().get(address);
+		ModuleViolationEvent moduleViolationEvent = new ModuleViolationEvent(punishModule.getViolationType(), connection, botPlayer);
 		ProxyServer.getInstance().getPluginManager().callEvent(moduleViolationEvent);
 		if (moduleViolationEvent.isCancelled()) {
 			return;
