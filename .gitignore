@@ -1,0 +1,26 @@
+#################
+## IntelliJ
+#################
+
+.idea/
+out/
+
+# External tool builders
+.externalToolBuilders/
+
+# Locally stored "Eclipse launch configurations"
+*.launch
+
+# CDT-specific
+.cproject
+
+# PDT-specific
+.buildpath
+
+## File-based project format:
+*.iws
+*.iml
+
+
+### Maven ###
+target/
